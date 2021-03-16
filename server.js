@@ -19,7 +19,7 @@ app.use("/fonts", express.static(__dirname + "/public/fonts"))
 app.use("/images", express.static(__dirname + "/public/images"))
 app.use("/js", express.static(__dirname + "/public/js"))
 app.use(cookieParser());
-
+/*
 let attempts = 0;
 
 fs.readFile("attemptsfile.json", function (err, data) {
@@ -27,7 +27,7 @@ fs.readFile("attemptsfile.json", function (err, data) {
         console.log("read file success");
         attempts = JSON.parse(data);
     }
-})
+})*/
 
 app.get("/", function (req, res) {
     if (req.cookies["sessionId"]) {
@@ -85,11 +85,11 @@ app.post("/login", bodyparserForm, function (req, res) {
                 if (attempts > 3) {
                     res.send(`<script>alert ("YOU HAVE BEEN BLOCED");</script>`)
                 } else {
-                    attempts++;
+                   /* attempts++;
                     console.log(attempts);
                     fs.writeFile("attemptsfile.json", JSON.stringify(attempts), function (err) {
                         console.log(err);
-                    })
+                    })*/
                     res.render("login.ejs", { message: "wronge id or password" });
                 }
             }
